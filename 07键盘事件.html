@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		
+		<h4>.enter</h4>
+		<h4>.tab</h4>
+		<h4>.delete (捕获“删除”和“退格”键)</h4>
+		<h4>.esc</h4>
+		<h4>.space</h4>
+		<h4>.up</h4>
+		<h4>.down</h4>
+		<h4>.left</h4>
+		<h4>.right</h4>
+		<hr />
+		
+		
+		<div id="aaa">
+			<label for="name">姓名：</label>
+			<input type="text" id="name" @keyup.enter="logname"/>
+			<span>回车</span>
+			<br />
+			
+			
+			<label for="age">年龄：</label>
+			<input type="text" id="age" @keyup.alt.enter="logage"/>
+			<span>alt + 回车</span>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#aaa',
+		data:{
+			
+		},
+		methods:{
+			logname:function(){
+				console.log("你正在输入名字")
+			},
+			logage:function(){
+				console.log('你正在输入年龄')
+			}
+		}
+	})
+</script>

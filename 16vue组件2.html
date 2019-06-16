@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<counter heading='点赞'></counter>
+			<counter heading='差评'></counter>
+		</div>
+		<template id='counter-template'>
+			<h1>{{heading}}<button @click="good++">{{heading}}{{good}}</button></h1>
+		</template>
+		
+		
+	</body>
+</html>
+<script type="text/javascript">
+	Vue.component("counter",{
+		template:'#counter-template',
+		props:['heading'],
+		data:function(){
+			return {
+				good:0,
+			}
+		},
+		
+		
+	})
+	//**********************************************************************************
+	
+	new Vue({
+		el:'#aaa',
+		
+	})
+	
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

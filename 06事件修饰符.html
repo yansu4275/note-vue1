@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+		<style type="text/css">
+			.bbb{
+				width: 500px;
+				border: 1px #000 solid;
+				text-align: center;
+				padding: 100px 0;
+			}
+			.ccc{
+				width: 100px;
+				height: 100px;
+				background: #ccc;
+				margin: auto;
+			}
+			.ddd{
+				background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="aaa">
+			111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+			<h3>.once---------只触发一次</h3>
+			<h4>my age is {{age}}</h4>
+			<button @click.once="age++">涨一岁，只能点一次</button>
+			<hr />
+			
+			
+			22222222222222222222222222222222222222222222222222222222222222222222222222222222222
+			<h3>.prevent--------阻止默认事件</h3>
+			<a @click.prevent='alert("不跳转")' href="https://www.baidu.com">超链接</a>
+			<hr />
+			
+			
+			33333333333333333333333333333333333333333333333333333333333333333333333333333333333
+			<h3>.capture---------优先触发，没有capture的按前后顺序</h3>
+			<div id="content">
+			    <div id="obj1" v-on:click.capture="doc">
+			        obj1
+			        <div id="obj2" v-on:click.capture="doc">
+			            obj2
+			            <div id="obj3" v-on:click="doc">
+			                obj3
+			                <div id="obj4" v-on:click="doc">
+			                obj4
+			                <!--。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。点击obj4的时候，弹出的顺序为：obj1、obj2、obj4、obj3；
+			                由于1，2有修饰符，故而先触发事件，然后就是4本身触发，最后冒泡事件。
+			                -->
+			            </div>
+			            </div>
+			        </div>
+			    </div>
+			
+			</div>
+			<hr />
+			
+			
+			44444444444444444444444444444444444444444444444444444444444444444444444444444444444
+			<h3>.selt-----------只有点击自身才能触发，点击其他的不触发</h3>
+			<div id="content">
+			    <div id="obj1" v-on:click="doc">
+			        obj1
+			        <div id="obj2" v-on:click.self="doc">
+			            obj2
+			            <!--只有点击obj2才可以出发其点击事件。-->
+			            <div id="obj3" v-on:click="doc">
+			                obj3
+			                <div id="obj4" v-on:click="doc">
+			                    obj4
+			
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			
+			5555555555555555555555555555555555555555555555555555555555555555555555555555555555
+			<h3>.stop---------停止</h3>
+			<div class="bbb" @mousemove="updataXY">
+				{{x}}----{{y}}
+				<div class="ccc" @mousemove="stopMove">停止移动</div>
+				<div class="ccc ddd" @mousemove.stop="">事件修饰符--.stop</div>
+			</div>
+			<hr />
+			
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#aaa',
+		data:{
+			x:0,
+			y:0,
+			age:0
+		},
+		methods:{
+			doc: function () {
+                this.id= event.currentTarget.id;
+                console.log(this.id)
+            },
+			updataXY:function(event){
+//				console.log(event)            // 各种信息
+				this.x=event.offsetX;
+				this.y=event.offsetY
+			},
+            stopMove:function(event){
+            	//事件暂停
+            	event.stopPropagation()
+            },
+            
+		}
+	})
+</script>

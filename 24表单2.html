@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="aaa">  
+			<p>实时更新</p>
+			<input type="text" v-model="text1"/>
+			<span>-----{{text1}}</span>
+			<hr />
+			
+			<p>.lazy 失去焦点后才刷新</p>
+			<input type="text" v-model.lazy="text2"/>
+			<span>-----{{text2}}</span>
+			<hr />
+			
+			<p>.lazy 失去焦点后才刷新</p>
+			<input type="text" v-model="text3"/>
+			<span>-----{{text3}}</span>
+		</div>  
+		 
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			text1:'',
+			text2:'',
+			text3:'',
+		},
+	}); 
+
+	
+	
+</script>  

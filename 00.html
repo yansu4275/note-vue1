@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.min-1.8.js"></script>
+	<style type="text/css">
+		.aaa {
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: relative;
+			left: 50px;
+			top: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="abc">
+		<h2>引入jq操作</h2>
+		<div class="aaa" @click="aaaclick" ref="aaa">
+			<span class="bbb" ref="bbb">000</span>
+		</div>
+	</div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+	new Vue({
+		el: '#abc',
+		data: {
+
+		},
+		methods: {
+			aaaclick: function (event) {
+				this.$refs.aaa.backgroundColor = '$ccc';
+				$('.bbb').html('2222222')
+			}
+		}
+
+	})
+</script>

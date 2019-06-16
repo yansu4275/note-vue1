@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+		<style type="text/css">
+			.bbb{
+				width: 500px;
+				outline: 1px #000 solid;
+				text-align: center;
+				padding: 200px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="aaa">
+			<div class="bbb" @mousemove="updataXY">
+				{{x}}----{{y}}
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#aaa',
+		data:{
+			x:0,
+			y:0,
+		},
+		methods:{
+			updataXY:function(event){
+//				console.log(event)            // 各种信息
+				this.x=event.offsetX;
+				this.y=event.offsetY
+			}
+		}
+	})
+</script>

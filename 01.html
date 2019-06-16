@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<!--使用v-text引入属性，不推荐-->
+			<p v-text="'name:' + name"></p>
+			<hr />
+			
+			<p>属性和函数都能引入</p>
+			<h1>name:{{ name }}</h1>
+			<h1>job:{{ job }}</h1>
+			
+			<h1>{{ good1() }}</h1>
+			<h1>{{ good2(' morning') }} ------- 传参</h1>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+//		 el：element 需要获取的元素，一定是html中的根容器
+		el:"#aaa",
+		
+//		data：用于数据的存储
+		data:{
+			name:'user',
+			job:'web'
+		},
+		
+//		methods：存储各种方法
+		methods:{
+			good1:function(){
+				return "good"
+			},
+			
+			// 传参数
+			good2:function(time){
+				return 'good' + time+ '----' + this.name
+			}
+		}
+		
+	})
+</script>

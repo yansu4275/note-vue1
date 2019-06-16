@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+		<style type="text/css">
+			.aaa{
+				color: red ;
+			}
+			.bbb{
+				background: #ccc;
+			}
+			.changeColor{
+				color: orange;
+			}
+			.changeBg{
+				background: orange;
+			}
+			.changeFont{
+				font-size: 20px;
+			}
+			.ccc{
+				color: blue;
+			}
+			.ddd{
+				background: orange;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="aaa">
+			<!--通过true、false设置样式类引不引用不引用-->
+			<p v-bind:class="{aaa:true,bbb:true}">通过true、false设置样式类引不引用</p>
+			
+			<!--点击取反，样式可以引用，然后引入-->
+			<p @click="changeColor = !changeColor" v-bind:class="{changeColor:changeColor}">点击添加颜色。点击取反，样式可以引用，然后引入</p>
+		
+			
+			<p @click="changeBg = !changeBg ; changeFont = !changeFont" v-bind:class="compClasses">点击背景颜色和大小改变。在computed中将多个样式写进一个事件里，通过点击改变这个事件里样式的ture、false</p>
+			
+			
+			<p :class="classes" @click="classes = !classes">加载一组class。一组class使用点击取反只能点一次</p>
+		</div> 
+	</body>
+</html>
+<script type="text/javascript">
+	var datalist = {
+			// 设置样式默认不引用
+			changeColor:false,
+			changeBg:false,
+			changeFont:false,
+			aaa:false,
+			classes:{
+				ccc:true,
+				ddd:true,
+			}
+	}
+	new Vue({
+		el:'#aaa',
+		data:datalist,
+		methods:{
+
+		},
+		computed:{
+			compClasses:function(){
+				return {
+					changeBg:this.changeBg,
+					changeFont:this.changeFont
+				}
+			}
+		}
+	})
+	
+	
+</script>

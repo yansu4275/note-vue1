@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<button @click="a++">add to A</button>
+			<button @click="b++">add to B</button>
+			<p>A = {{a}}</p>
+			<p>B = {{b}}</p>
+			<p>Age + A = {{addToA}}</p>
+			<p>Age + B = {{addToB}}</p>
+			<hr />
+			
+			
+			<p>两秒钟后 a 自动加 1 。computed 实时监听属性</p>
+		</div> 
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			a:0,
+			b:0,
+			age:20
+		},
+		methods:{
+
+		},
+		
+//		computed---------点击哪个触发哪个,优化性能,methods是全部都触发
+		computed:{
+			addToA:function(){
+				return this.a + this.age;
+			},
+			addToB:function(){
+				return this.b + this.age;
+			}
+		},
+	})
+	
+	setTimeout(function(){
+		aaa.a += 1
+	},2000)
+</script>

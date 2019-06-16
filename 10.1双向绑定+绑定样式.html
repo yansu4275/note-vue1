@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.red{
+				color: red;
+			}
+			.orange{
+				color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="abc">
+			<h4>双向绑定+绑定动态：v-model + v-bind:class 实现样式切换</h4>
+			<p>-----------根据 v-model，value 和 对应属性绑定，即获取value值赋给属性</p>
+			<hr />
+			
+			
+			<input type="radio" name="aaa" id="red" value="red" v-model="classValue"/>
+			<label for="red">红色</label>
+			<br />
+			
+			<input type="radio" name="aaa" id="orange" value="orange" v-model="classValue"/>
+			<label for="orange">橘黄</label>
+			
+			<h1 v-bind:class="classValue">2222222</h1>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	new Vue({
+		el:'#abc',
+		data:{
+			classValue:'red',
+		}
+	})
+</script>

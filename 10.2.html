@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.aaa{
+				color: blue;
+			}
+			.bbb{
+				background: #ccc;
+			}
+			.ccc{
+				background: orange;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+		<div id="aaa">
+			<p @click="aaa = !aaa ; bbb = !bbb" v-bind:class="compClasses">将多个样式写进一个事件里，通过点击改变这个事件里样式的ture、false</p>
+			<script type="text/javascript">
+				new Vue({
+					el:'#aaa',
+					data:{
+						aaa:false,
+						bbb:false
+					},
+					methods:{
+						
+					},
+					computed:{
+						compClasses:function(){
+							return {
+								aaa:this.aaa,
+								bbb:this.bbb
+							}
+						}
+					}
+				})
+			</script>
+		</div>
+		<hr />
+		<!--*******************************************************************************-->
+		
+		222222222222222222222222222222222222222222222222222222222222222222222222222222222222222		
+		<div id="bbb">
+			<p v-bind:class="classObject">属性里面包属性。在class里面包含多个class</p>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:'#bbb',
+				data:{
+					classObject:{
+						aaa:true,
+						bbb:true
+					}
+				},
+			})
+		</script>
+		<hr />
+		<hr />
+		<!--****************************************************************************-->
+		
+		数组------33333333333333333333333333333333333333333333333333333333333
+		
+		<div id="ccc">
+			<p v-bind:class="[AAA,BBB]">通过 class 数组加载多个类</p>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:'#ccc',
+				data:{
+					AAA:'aaa',
+					BBB:'bbb'
+				},
+			})
+		</script>
+		<hr />
+		<!--****************************************************************************-->
+		
+		4444444444444444444444444444444444444444444444444444444444444444444444444444
+		
+		<div id="ddd">
+			<p v-bind:class="[AAA, ddd? BBB : CCC]" @click="ddd = !ddd">数组类 + 三元表达式,加载 aaa ,判断 ddd , ddd 是 true 加载 bbb。是 false 加载 ccc </p>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:'#ddd',
+				data:{
+					AAA:'aaa',
+					BBB:'bbb',
+					CCC:'ccc',
+					ddd:false
+				},
+			})
+		</script>
+	</body>
+</html>

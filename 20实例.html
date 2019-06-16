@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="app">  
+			<p>在实例创建后，挂载以前不存在的属性是不会显示的</p>
+			<p>可以使用 Vue.set() 添加属性，-----数组</p>
+			<hr />
+			
+			<h3>{{user.name}}----{{user.age}}-----{{user.job}}</h3>		
+			<hr />
+			
+			<p>{{user}}</p>
+			<hr />
+			
+			<p v-for="(key,val) in user">{{val}}---{{key}}</p>
+		</div>  
+		
+	</body>
+</html>
+<script type="text/javascript">
+	//指向同一内存空间
+	var aaa = {
+		name:'user1',
+		age:10
+	}
+	
+    var app = new Vue({  
+        el: '#app',  
+        data: {  
+           user:aaa
+        },  
+    });  
+    
+    // 重新定义的属性
+    app.user.name = 'user2'
+    aaa.age = 20
+    
+    // 添加的属性
+    Vue.set(aaa,'job','前端')
+</script>  

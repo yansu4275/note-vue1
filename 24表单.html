@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<h3>通过v-model双向绑定表单的value，通过选择将value内容写入空数组中，然后将数组导出</h3>
+		<div id="aaa">  
+			<p>11111111111111111111111111111111111111111111111111111111111111复选</p>
+			篮球<input type="checkbox" name="group" value="篮球" v-model="checks"/>
+			足球<input type="checkbox" name="group" value="足球" v-model="checks"/>
+			排球<input type="checkbox" name="group" value="排球" v-model="checks"/>
+			<p>{{checks}}</p>
+			<li v-for="check in checks">{{check}}</li>
+			<hr />
+			
+			<p>22222222222222222222222222222222222222222222222222222222222222单选</p>
+			男<input type="radio" value="男" v-model="radio" />
+			女<input type="radio" value="女" v-model="radio" />
+			<p>{{radio}}</p>
+			<hr></hr>
+			
+			<p>333333333333333333333333333333333333333333333333333333下拉列表、复选</p>
+			<select v-model="selects" multiple>
+				<option value="1" selected="selected">HTML</option>
+				<option value="2">JS</option>
+				<option value="3">VUE</option>
+			</select>
+			<p>{{selects}}</p>
+			
+			
+			<p>44444444444444444444444444444444444444444444444444444下拉列表、单选</p>
+			<select v-model="select2s">
+				<option value="1">HTML</option>
+				<option value="2" selected>JS</option>
+				<option value="3">VUE</option>
+			</select>
+			<span>{{select2s}}</span>
+			
+			
+			<p>5555555555555555555555555555555555555555555555555555555555动态生成</p>
+			<select>
+				<option :value="select3.name" v-for="select3 in select3s">{{select3.name}}--{{select3.age}}</option>
+			</select>
+		</div>  
+		 
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			checks:[],
+			radio:'',
+			selects:[],
+			select2s:'',
+			select3s:[
+				{name:'user1', age:11},
+				{name:'user2', age:22},
+				{name:'user3', age:33},
+			]
+			
+		},
+	}); 
+
+	
+	
+</script>  

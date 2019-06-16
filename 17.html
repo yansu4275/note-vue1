@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="abc">
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	var aaa = {
+		name:'你好',
+		age:33333
+	}
+	
+	var bbb = new Vue({
+		el:'#abc', 
+		data:aaa,
+		methods:{ 
+			
+		}
+	})
+	
+	console.log('aaa.name=' + aaa.name + '-----aaa.age=' + aaa.age)
+	console.log('bbb.name=' + bbb.name + '-----bbb.age=' + bbb.age) 
+	
+	console.log('---------------------------------------------------')	
+	aaa.age = 22222;
+	console.log('aaa.age=' + aaa.age)
+	console.log('bbb.age=' + bbb.age)
+	
+	
+	bbb.age = 11111;
+	console.log('aaa.age=' + aaa.age)
+	console.log('bbb.age=' + bbb.age)
+	
+	console.log('---------------------------------------------------')	
+	 
+	bbb.$el === document.getElementById('abc')
+	console.log(bbb.$el === document.getElementById('abc'))
+	
+</script> 

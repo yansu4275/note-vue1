@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<style type="text/css">
+			tr:nth-child(even){background: #FCF8E3;} 	/*偶数行*/
+		</style>
+	</head>
+	<body>
+		<div id="aaa" class="container">  
+			<table border="" cellspacing="1" cellpadding="" class="table table-bordered">
+				<tr>
+					<th>书名</th>
+					<th>价格</th>
+					<th>数量</th>
+					<th>小计</th>
+					<th>操作</th>
+				</tr>
+				<tr v-for="(book,index) in books">
+					<td>{{book.name}}</td>
+					<td>{{book.price}}</td>
+					<td>
+						<!--v-if 判断数量-->
+						<button @click="book.count--">-</button>
+						<input type="text" v-model="book.count=0" v-if="book.count<=0"/>
+						<input type="text" v-model="book.count" v-else/>
+						
+						<button @click="book.count++">+</button>
+					</td>
+					<td>{{book.price * book.count}}</td>
+					<td><button class="btn btn-danger" @click="vremove(book)">删除</button></td>
+				</tr>
+				<tr>
+					<th colspan="5">总价：{{moneyall}}</th>
+				</tr>
+			</table>
+			
+			<!--添加-->
+			<form class="form-group" onsubmit="return false">
+				<label for="bookname" class="">书名</label>
+				<input type="text" v-model="addbook.name" class="form-control"/>
+				
+				<label for="bookname" class="">价格</label>
+				<input type="text" v-model="addbook.price" class="form-control"/>
+				
+				<label for="bookname" class="">数量</label>
+				<input type="text" v-model="addbook.count" class="form-control"/>
+				
+				<button class="btn btn-primary" type="submit" @click="add">添加</button>
+			</form>
+			
+			<button @click="vreset" class="btn btn-danger">清空购物车</button>
+			
+		</div>  
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			books:[
+				{name:'vue', price:10, count:1},
+				{name:'html', price:20, count:2},
+				{name:'css', price:30, count:3},
+				{name:'js', price:40, count:4},
+				{name:'jq', price:50, count:5},
+			],
+			addbook:{
+				name:'',
+				price:'',
+				count:''
+			}
+		},
+		
+		methods:{
+			//*****************************************************删除
+			vremove:function(book){
+				//从本列数删除一列，就是删除本列
+				var index = this.books.indexOf(book)
+    			this.books.splice(index,1)
+			},
+			
+			//*******************************添加，没添加一个后给addbook数组换一个空的
+			add:function(){
+				this.books.push(this.addbook)
+				this.addbook = {
+					name:'',
+					price:'',
+					count:''
+				}
+			},
+			
+			//******************************************************清空购物车
+			vreset:function(){
+				this.books = []
+			}
+		},
+		
+		computed:{
+			//****************************************************总价
+			moneyall:function(){
+				var allp = 0;
+		        for (var i=0;i<this.books.length;i++) {
+		          	allp+=this.books[i].price * this.books[i].count;
+		        };
+		        return allp;
+		        
+			}
+		},	
+	});
+	
+	
+	
+</script>  

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="abc">
+			<h3>v-show------------显示隐藏切换，页面中是存在的，display：none占位</h3>
+			
+			
+			<button @click="aaa = !aaa">aaa显示/隐藏</button>
+			<button @click="bbb = !bbb">bbb显示/隐藏</button>
+			
+			<p v-show="aaa">aaaaaaaaaaaaaaaaaaaaaa</p>
+			<p v-show="bbb">bbbbbbbbbbbbbbbbbbbbbbb</p>
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#abc',
+		data:{
+			aaa:true,
+			bbb:true,
+		},
+		methods:{
+			
+		},
+		computed:{
+			
+		}
+	})
+</script>

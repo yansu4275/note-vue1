@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="app">  
+			<p>内敛样式，用法类似v-bind:class，定义方式类似sass</p>
+			<p :style="{color:pColor, background:pBgColor}">在data中赋值，然后引用class</p>		    
+			<p :style="styles">一组style，驼峰式写法</p>		 
+			<p :style="[style1, style2]">数组</p>
+			<hr />
+			
+			<!--*************************************************************-->
+			<p>对于比较新的css3样式，vue会自动添加前缀兼容浏览器，比如 transform</p>
+			<h2 :style="style3">0000</h2>
+		</div>  
+		
+	</body>
+</html>
+<script type="text/javascript">
+    new Vue({  
+        el: '#app',  
+        data: {  
+           	pColor:'blue',
+           	pBgColor:'#ccc',
+          	styles:{
+           		color:'green',
+           		backgroundColor:'yellow',
+           		fontSize:'20px', 
+           	},
+           	style1:{
+           		color:'blue'
+           	},
+           	style2:{
+           		background:'#ccc'
+           	},
+           	
+           	
+           	style3:{
+           		display:'inline-block',
+           		background:'orange',
+           		transform:'rotate(45deg)'
+           	}
+        },  
+        
+    });  
+</script>  

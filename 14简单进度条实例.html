@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.img{
+				width: 100px;
+				height: 100px;
+				background: url(img/0.png) repeat center;
+			}
+			.img.img2{
+				background: url(img/1.png);
+			}
+			.health{
+				width: 100px;
+				height: 15px;
+				outline: 2px red solid;
+			}
+			.health div{
+				width: 100px;
+				height: 15px;
+				background: orange;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="abc">
+			<!--图片-->
+			<!--.img.img2样式和ended绑定-->
+			<div class="img" v-bind:class="{img2:ended}"></div>
+			
+			<!--进度条-->
+			<div class="health">
+				<!--当前进度条宽度和health值绑定-->
+				<div v-bind:style="{width:health + '%'}"></div>
+			</div>
+			
+			<!--按钮-->
+			<!--点击按钮显示隐藏和ended绑定-->
+			<button @click="forword" v-show="!ended">点击</button>
+			<button @click="reset">重启</button>
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#abc',
+		data:{
+			//进度条宽度
+			health:100,
+			
+			ended:false,
+		},
+		methods:{
+			forword:function(){
+				//每次点击，进度条减少
+				this.health-=10;
+				
+				//进度条走完时ended取反
+				if (this.health<=0) {
+					this.ended=true
+				}
+			},
+			
+			//重启，
+			reset:function(){
+				this.health=100;
+				this.ended=false;
+			}
+			
+		},
+		computed:{
+			
+		}
+	})
+</script>

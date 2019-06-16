@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<h2>计算属性默认提供 getter，需要时也可以提供setter</h2>
+			<hr />
+			
+			<h3>{{fullName}}---------{{age}}</h3>
+			
+			<hr />
+			<p>两秒后变化</p>
+		</div> 
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			firstName:'Yan',
+			lastName:'Su',
+			age:20
+		},
+		computed:{
+			fullName:{
+				//get 返回属性
+				get:function(){
+					return this.firstName +" "+ this.lastName
+				},
+				//set 设置属性，更改属性
+				set:function(newValue){
+					//将新内容以空格为分界，形成一个数组
+					var names = newValue.split(' ')
+					this.firstName = names[0]
+					this.lastName = names[names.length - 1]
+				}
+			}
+		},
+	})
+	setTimeout(function(){
+		aaa.fullName = 'su yan'
+	},2000)
+	aaa.age = 30
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="app">  
+		    <span>SearchByName: </span>  
+		    <input v-model="searchQuery">  
+		    <table>  
+		        <thead>  
+		        <tr>  
+		            <td v-for="col in columns">{{col|capitalize}}</td>  
+		        </tr>  
+		        </thead>  
+		        <tbody>  
+		        <tr v-for="entry in filteredData">  
+		            <td v-for="col in columns">{{entry[col]}}</td>  
+		        </tr>  
+		        </tbody>  
+		    </table>  
+		</div>  
+		
+	</body>
+</html>
+<script type="text/javascript">
+    new Vue({  
+        el: '#app',  
+        data: {  
+            searchQuery: '',  
+            columns: ['name', 'gender', 'age'],  
+            data: [	
+            	{name: 'Jack', gender: 'male',   age: 26 },
+            	{name: 'John', gender: 'female', age: 20 },
+            	{name: 'Lucy', gender: 'female', age: 16 }
+            ]
+        },  
+        filters: {  
+            capitalize: function (value) {  
+                return value.charAt(0).toUpperCase() + value.slice(1);  
+            }  
+        },  
+        computed: {  
+            filteredData: function () {  
+                var self = this;  
+                return this.data.filter(function (item) {  
+                    return item.name.toLowerCase().indexOf(self.searchQuery.toLowerCase()) !== -1;  
+                })  
+            }  
+        }  
+    });  
+</script>  

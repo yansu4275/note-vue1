@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<p>修改、删除数组</p>
+			<ul>
+				<li v-for="user in users">{{user.name}}---{{user.age}}</li>
+			</ul>
+		</div>
+		
+		
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			users:[
+				{name:'user1',age:10},
+				{name:'user2',age:10},
+				{name:'user3',age:10},
+				{name:'user4',age:10},
+				{name:'user5',age:10},
+			]
+		},
+		methods:{
+			
+			
+		},
+		computed:{
+			
+		}
+	})
+	//修改
+	aaa.users[0] = {name:'修改1',age:'110'};
+				
+	Vue.set(aaa.users,1,{name:'修改2',age:'110'});
+	
+	
+				
+	//已被删除的方法
+//	aaa.$set(aaa.users, 2, {name:'修改3',age:'110'});
+	
+	//删除数组----用法和js总基本一样
+	bbb = function () {
+    	aaa.users.splice(3,1)
+	}
+	bbb()
+	
+	
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

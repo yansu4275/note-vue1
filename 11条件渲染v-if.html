@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="abc">
+			<h3>v-if----------------判断是false/true，决定显不显示，不显示时页面代码里是不存在的</h3>
+			<h3>v-else--------------v-if的 else 块，如果v-if为false则 else 为 true</h3>
+			<h3>v-else-if------------如果v-if为false，则判断。。。。</h3>
+			
+			<button @click="aaa = !aaa">点击切换</button>
+			
+			<p v-if="aaa">aaaaaaaaaaaaaaaaaaaaaa</p>
+			<p v-else>bbbbbbbbbbbbbbbbbbbbbbb</p>
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#abc',
+		data:{
+			aaa:true,
+		},
+		methods:{
+			
+		},
+		computed:{
+			
+		}
+	})
+</script>

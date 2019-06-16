@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<greeting></greeting>
+			<p>{{aaa}}</p>
+		</div>
+		<hr />
+		
+		
+		<!--**********************************************************************-->
+		<div id="bbb">
+			<greeting></greeting>
+			<button @click="bbb">改变aaa</button>
+		</div>
+		<hr />
+		
+		
+		<!--将内容写在组件里，然后引用这个组件，组件中的标签要写在一个不为 div 的父标签中-->
+		<template id="greet-template">
+			<p>{{name}}----- <button @click="changeName">改名</button></p>
+		</template>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	Vue.component("greeting",{
+		template:"#greet-template",
+		data:function(){
+			return {
+				name:'user1'
+			}
+		},
+		methods:{
+			changeName:function(){
+				this.name='user2'
+			}
+		}
+	})
+	//**********************************************************************************
+	
+	var one = new Vue({
+		el:'#aaa',
+		data:{
+			aaa:'aaaaaaaaaaaaa'
+		}
+		
+	})
+	
+	//**********************************************************************************
+	var two = new Vue({
+		el:'#bbb',
+		methods:{
+			bbb:function(){
+				one.aaa = '00000000000'
+			}
+		}
+		
+	})
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<h2>双向数据绑定，主要用于input、select、textarea</h2>
+		<hr />
+		
+		111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+		<h3>this.$refs.name.value--------获取refs属性值为name的标签内容</h3>
+		<h4>keyup--------按键弹起</h4>
+		<div id="aaa">
+			<label>姓名：</label>
+			<input type="text" @keyup="logname" ref="name"/>
+			<span>-------{{name}}</span>
+			<br />
+			
+			
+			<label for="age">年龄：</label>
+			<input type="text" @keyup="logage" ref="age"/>
+			<span>-------{{age}}</span>
+		</div>
+		<!--*****************************************************************************-->			
+		<hr />
+		<script type="text/javascript">
+			new Vue({
+				el:'#aaa',
+				data:{
+					name:'000',
+					age:'',
+				},
+				methods:{
+					logname:function(){
+						this.name=this.$refs.name.value;
+					},
+					logage:function(){
+						this.age=this.$refs.age.value;
+					}
+				}
+			})
+		</script>	
+		
+		
+		
+		22222222222222222222222222222222222222222222222222222222222222222222222222222222222
+		<h3>v-model---------value和data中对应的属性绑定</h3>
+		<div id="bbb">
+			<label>姓名：</label>
+			<input type="text" v-model="name" />
+			<span>-------{{name}}</span>
+			<br />
+			
+			<label>年龄：</label>
+			<input type="text" v-model="age"/>
+			<span>-------{{age?age:'000000000000'}}-----三元表达式</span>
+			<br />
+			
+			<label>工作：</label>
+			<input type="text" v-model='job' />
+			<span v-html="job"></span>
+			
+			<pre>{{$data | json}}</pre>
+		</div>
+		
+		
+		<!--*********************************************************************-->
+		<script type="text/javascript">
+			new Vue({
+				el:'#bbb',
+				data:{
+					name:'0',
+					age:'',
+					job:'<span style="background:orange">v-html，识别html标签</span>'
+				}
+			})
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.active{
+				background: red;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="abc">
+			<li v-for="(list, i) in list"
+		      	>
+		      	<div v-for="li in list"
+		      		:class="{'active':ind === i}"
+		      		@click="changeBgc(i)"
+		      		>{{li}}</div>
+		      	<hr />
+	      	</li>
+
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#abc',
+		data:{
+			list: [
+				['苹果', '香蕉', '菠萝', '芒果'],
+				['苹果', '香蕉', '菠萝', '芒果'],
+				['苹果', '香蕉', '菠萝', '芒果'],
+			],
+      		ind: '',
+			aaa:['1111','2222','3333'],
+			
+			users:[
+				{name:"user1", age:10},
+				{name:"user2", age:20},
+				{name:"user3", age:30},
+			] 
+		},
+		methods:{
+			 changeBgc: function (index) {
+			      this.ind = index
+			    }
+		},
+		computed:{
+			
+		}
+	})
+</script>

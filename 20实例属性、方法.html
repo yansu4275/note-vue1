@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="aaa">  
+			<h1>{{name}}</p>
+				
+			<input type="text" v-model="age"/>
+			<span>{{age}}</span>
+		</div>  
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			name:'user1',
+			age:'1111111111'
+		},
+	});
+	//vm.$el 不能更改绑定数据的元素，相当于js中的获取id选择器
+	console.log(aaa.$el == document.getElementById('aaa'))
+	
+	//vm.$watch 监听数据变化，有变化时执行
+	aaa.$watch('age', function(newValue, oldValue){
+		console.log(newValue+ '---' +oldValue)
+	})
+	
+	
+	
+	//vm.$data data对应的对象,----------------貌似不能用
+//	aaa.$data = {age:'0000'}
+
+	
+	
+</script>  

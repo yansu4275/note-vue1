@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="abc">
+			<div id="app">
+				<input type="text" v-model="name"/>
+				<p>capitalize：首字母大写-------{{name | capitalize}}</p>
+				<p>uppercase：全部大写-------{{name | uppercase}}</p>
+				<p>lowercase：全部小写-------{{name | lowercase}}</p>
+			</div>
+
+
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//局部过滤器
+//	filters: {
+//	  	capitalize: function (value) {
+//	    	if (!value) return ''
+//	    	value = value.toString()
+//	    	return value.charAt(0).toUpperCase() + value.slice(1)
+//	  	}
+//	}
+	
+	
+	//全局过滤器
+	//************************************************************首字母大写
+	Vue.filter('capitalize', function(value,begin) {
+//		if (!value) {return ''}
+//		value = value.toString()
+		return value.charAt(0).toUpperCase() + value.slice(1)
+
+//		return value.slice(0,begin).toUpperCase() + value.slice(begin)
+	})
+	
+	//************************************************************全大写
+	Vue.filter('uppercase', function(value) {
+		return value.toUpperCase()
+	})
+	
+	//************************************************************全小写
+	Vue.filter('lowercase', function(value) {
+		return value.toLowerCase()
+	})
+	
+	
+	new Vue({
+		el:'#abc',
+		data:{
+			name:'abcd EFG',
+		}
+	})
+	
+	
+</script>
+
+

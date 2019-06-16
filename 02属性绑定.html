@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="js/vue.min.js"></script>
+</head>
+
+<body>
+	<div id="aaa">
+		<h3>v-bind:---------给后面的属性绑定相应的值，简写可省略v-bind</h3>
+
+		<input type="text" v-bind:value="name" />
+
+		<a :href="aaaaa">百度超链接</a>
+		<hr />
+
+
+		<!--****************************************************************************-->
+		<h3>v-html="bbbbb"----------直接将超链接引入一个完整 a 标签</h3>
+
+		<p v-html="bbbbb"></p>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript">
+	new Vue({
+		el: "#aaa",
+
+		data: {
+			name: 'user',
+			aaaaa: 'https://www.baidu.com',
+			bbbbb: '<a href="https://www.baidu.com">直接通过vue引入的超链接</a>'
+		},
+
+		//	data-binding:-----给属性绑定对应的值
+
+	})
+</script>

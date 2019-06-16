@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<h3>my age is {{age}}</h3>
+			
+			<button v-on:click="add(1)">涨一岁</button>
+			<button v-on:click="subtract(1)">减一岁</button>
+			
+			<hr />
+			<button v-on:click="add(10)">涨十岁</button>
+			<button v-on:click="subtract(10)">减十岁</button>
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#aaa',
+		data:{
+			age:0
+		},
+		methods:{
+			add:function(inc){
+				this.age += inc;
+			},
+			subtract:function(dec){
+				this.age -= dec;
+			}
+		},
+	})
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="aaa">  
+			<p>v-bind:-----动态绑定属性</p>
+			<a v-bind:href="href">超链接</a>
+			<img v-bind:src="src"/>
+		</div>  
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			src:'https://cn.vuejs.org/images/logo.png',
+			href:'https://cn.vuejs.org/'
+		},
+//		
+	}); 
+
+	
+	
+</script>  

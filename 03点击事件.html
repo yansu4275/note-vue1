@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<h2>v-on:click-----------单击事件，简写@:click</h2>
+			<h3>my age is {{age}}</h3>
+			<hr />
+			<p>事件直接写在标签里</p>
+			<button @click="age++">涨一岁</button>
+			<button v-on:click="age--">减一岁</button>
+			
+			
+			<hr />
+			<p>事件写在methods中</p>
+			<button v-on:click="add">涨一岁</button>
+			<button v-on:click="subtract">减一岁</button>
+			
+			
+			<hr />
+			<h2>v-on:dbclick---------双击事件</h2>
+			<button v-on:dblclick="add">涨一岁</button>
+			<button v-on:dblclick="subtract">减一岁</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	new Vue({
+		el:'#aaa',
+		data:{
+			age:1
+		},
+		methods:{
+			add:function(){
+				this.age++;
+			},
+			subtract:function(){
+				if (this.age>0) {
+					this.age--;
+				}
+			}
+		}
+	})
+</script>

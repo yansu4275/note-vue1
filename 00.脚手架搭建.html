@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <h3>
+        npm install vue ----------下载最新稳定版vue
+        <hr> npm install --global vue-cli --------全局安装 vue-cli
+        <hr>
+        <hr> vue init webpack new-name ---------创建一个基于webpack模板的新项目：
+        <hr> cd new-name
+        <hr> npm run dev-------开启
+    </h3>
+    <hr>
+    <hr>
+    <hr />
+
+    <h2>兼容ie</h2>
+    <p>
+        npm install --save babel-polyfill
+        <hr>
+        <!-- npm install --save es6-promise -->
+        <hr> main.js 中引入 babel-polyfill、save es6-promise
+        <br> ----------------import 'babel-polyfill'
+        <br> ----------------import 'es6-promise/auto'
+        <hr> bulid 下 webpack.base.conf.js 中 app: './src/main.js' 修改成------app: ['babel-polyfill', './src/main.js']
+        <hr> vue.app中的跳转会保留自带的，其余页面不会
+    </p>
+
+
+    <hr>
+    <hr>
+    <hr>
+    <h2>安装axios，有的要安装vue-axios，没搞太明白----vuex-main.js</h2>
+    <p>引入 axios ，挂在 vue 的原型上</p>
+    <p>import axios from 'axios'</p>
+    <p>Vue.prototype.axios = axios</p>
+
+
+    <h2>安装sass</h2>
+    <p>npm install --save-dev sass-loader node-sass</p>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="aaa">
+			<h3>aaa.title----{{tittle}}</h3>
+			<p>{{greet}}</p>
+		</div>
+		<hr />
+		
+		
+		<!--**********************************************************************-->
+		<div id="bbb">
+			<h3>{{tittle}}</h3>
+			<p>{{greet2}}</p>
+			
+			<p>在bbb中调用aaa的属性：aaa.name----{{aaa.name}}</p>
+			
+			<button @click="changeaaaTittle">在bbb中改变aaa的tittle</button>
+		</div>
+		<hr />
+		
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = new Vue({
+		el:'#aaa',
+		data:{
+			tittle:"aaa 的内容",
+			name:'00000000'
+		},
+		methods:{
+			
+		},
+		computed:{
+			greet:function(){
+				return "hello aaa!"
+			}
+		}
+	})
+	
+	//**********************************************************************************
+	var bbb = new Vue({
+		el:'#bbb',
+		data:{
+			tittle:"bbb 的内容"	
+		},
+		methods:{
+			changeaaaTittle:function(){
+				aaa.tittle="在bbb中改变aaa的tittle！"
+			}
+			
+		},
+		computed:{
+			greet2:function(){
+				return "hello bbb!"
+			}
+		}
+	})
+	
+	bbb.tittle="bbb.title----在vue外部改变bbb的title！"
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
